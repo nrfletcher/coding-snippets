@@ -159,7 +159,7 @@ Also introduces the || and && logic operators as well as an else if statement
 #include <stdio.h>
 
 #define IN  0
-#deinfe OUT 0
+#define OUT 0
 
 main()
 {
@@ -183,5 +183,151 @@ main()
 ```
 ### 1.6 Arrays
 
+Instead of using individual variables to count occurences of values, using an array to hold
+values can be much more efficient and logical
+```c
+#include <stdio.h>
 
-  
+main()
+{
+    int c, i, nwhite, nother;
+    int ndigit[10];
+
+    nwhite = nother = 0;
+    for (i = 0; i < 10; i++)
+        ndigit[i] = 0;
+
+    while ((c = getchar()) != EOF)
+        if (c >= '0' && c <= '9')
+        ++ndigit[c-'0'];
+        else if (c == ' ' || c == '\n' || c == '\t')
+            ++nwhite;
+        else
+            ++nother;
+
+        printf("digits = ");
+        for (i = 0; i < 10; i++)
+            printf(" %d", ndigit[i]);
+        printf(", white space = %d, other = %d", nwhite, nother);
+}
+```
+This program prints out a histogram representation of the length of words input
+```c
+#include <stdio.h>
+
+main()
+{
+    int c;
+    int words = 1;
+    int newWord = 0;
+    int len = 0;
+
+    while ((c = getchar()) != EOF)
+    {
+        if (c == '\n')
+        {
+            printf(" ");
+            for (int i = 0; i < len; i++)
+                printf("|");
+            len = 0;
+        }
+        if (c != ' ')
+            ++len;
+        putchar(c);
+        if (c == ' ')
+        {
+            ++words;
+            newWord = 1;
+            for (int i = 0; i < len; i++)
+                printf("|");
+            printf("\n");
+            len = 0;
+        }
+    }
+}
+```
+This program takes input and prints a frequency histogram of all characters
+```c
+#include <stdio.h>
+
+main()
+{
+    int characters[127];
+    int c;
+
+    for (int i = 0; i < 127; i++)
+    {
+        characters[i] = 0;
+    }
+
+    while ((c = getchar()) != EOF)
+    {
+        ++characters[c];
+    }
+    for (int i = 0; i < 127; i++)
+    {
+        printf("%c ", i);
+        for (int j = 0; j < characters[i]; j++)
+        {
+            printf("|");
+        }
+        printf("\n");
+    }
+}
+```
+### 1.7 Functions
+
+A function can be thought of as a subroutine. It is an encapsulation of work to be done
+someplace else, and helps to provide cleaner code and makes larger programs easier to manage
+
+Here is an example of a custom made power() function which raises a number m to the nth power
+```c
+#include <stdio.h>
+
+int power(int m, int n); // This is a function prototype
+
+main()
+{
+    int i;
+
+    for (i = 0; i < 10; ++i)
+        printf("%d %d %d\n", i, power(2, i), power(-3, i));
+    return 0; // Returning 0 in main implies a normal end of execution
+}
+
+int power(int base, int n)
+{
+    int i, p;
+
+    p = 1;
+    for (i = 1; i <= n; ++i)
+        p = p * base;
+    return p;
+}
+```
+
+Here is the 1.2 section now using a function instead
+```c
+#include <stdio.h>
+
+int converter(int lower, int upper, int step);
+
+main()
+{
+    converter(0, 300, 20);
+    return 0;
+}
+
+int converter(int lower, int upper, int step)
+{
+    float fahr, celsius;
+    fahr = lower;
+    while (fahr <= upper)
+    {
+        celsius = (5.0/9.0) * (fahr-32.0);
+        printf("%3.0f %6.1f\n", fahr, celsius);
+        fahr = fahr + step;
+    }
+    return 0;
+}
+```
