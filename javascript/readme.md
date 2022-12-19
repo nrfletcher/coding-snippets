@@ -51,3 +51,19 @@ let userGuest = {};
 userAdmin.admin?.(); // I am admin
 userGuest.admin?.(); // nothing happens
 ```
+### 4.7 Symbol type
+
+Symbols are primitive types for unique identifiers. Symbols are always different
+values, even if they have the same name. There are two main uses cases:
+1. Hidden object properties
+2. Alter some built-in behaviors like Symbol.iterator
+```javascript
+let user = {
+  name: 'John'
+};
+
+let id = Symbol("id");
+user[id] = 1;
+console.log(user[id]); // access data using Symbol as the key
+
+### 4.8 Object to primitive conversions
