@@ -331,3 +331,21 @@ int converter(int lower, int upper, int step)
     return 0;
 }
 ```
+### 1.8 Call by value
+
+All function arguments are passed by value, not reference unless using a pointer.
+This means that when passing a value to a function the value passed is actually a copy of the original
+value; the original value will not actually change when interacted with inside the function - only the temporary copy.
+
+This is not the case for arrays, however
+```c
+int power(int base, int n)
+{
+  int p;
+  
+  for (p = 1; n > 0; --n)
+    p = p * base;
+   return p;
+}
+```
+### 1.9 Character arrays
