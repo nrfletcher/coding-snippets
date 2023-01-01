@@ -65,6 +65,7 @@ let user = {
 let id = Symbol("id");
 user[id] = 1;
 console.log(user[id]); // access data using Symbol as the key
+```
 
 ### 4.8 Object to primitive conversions
 
