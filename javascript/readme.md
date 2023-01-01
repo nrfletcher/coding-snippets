@@ -67,3 +67,21 @@ user[id] = 1;
 console.log(user[id]); // access data using Symbol as the key
 
 ### 4.8 Object to primitive conversions
+
+Objects can be converted to primitives in a situation that deems it appropriate
+```javascript
+// "string"
+alert(obj);
+anotherObj[obj] = 123;
+
+// "number"
+let num = Number(obj);
+
+let n = +obj;
+let delta = date1 - date2;
+
+let greater = user1 > user2;
+
+// "default"
+let total = obj1 + obj2;
+```
