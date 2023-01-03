@@ -75,3 +75,54 @@ Math.random();
 Math.max(1, 4, 6, -2);
 Math.pow(number, power);
 ```
+## 5.3 Strings
+
+All textual data is stored as strings, there is no 'char' character like in Java or C
+
+The internal format is always UTF-16, it is not tied to page encoding
+```javascript
+// With strings we can use single or double quotes, but backticks allow expression embedding
+function sum(a, b) {
+    return a + b;
+}
+
+console.log(`1 + 2 = ${sum(1, 2)}.`);
+
+// The length attribute of strings is a property, not a function - therefor no parantheses
+'length'.length // 6
+
+// Character access
+let string = 'this is a string';
+
+let char = string[0];
+char = string.charAt(0);
+
+// To iterate over characters in a string
+for (let char of string) {
+    console.log(char);
+}
+
+// Such as in Python, strings are immutable (unchangeable)
+string[3] = 's'; // error
+
+// Case changing
+string.toUpperCase();
+string.toLowerCase();
+
+// Substring searching
+string = 'New string';
+string.indexOf('New'); // 0
+string.includes('string'); // True
+
+// Getting substrings
+let substring = 'Substring';
+
+substring.slice(0, 5); // subst
+substring.slice(2); // bstring
+substring.substring(0, 2);
+substring.substr(0, 2);
+```
+## Arrays
+
+Storing ordered collections of data
+```javascript
