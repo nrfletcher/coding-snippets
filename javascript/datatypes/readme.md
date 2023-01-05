@@ -125,4 +125,106 @@ substring.substr(0, 2);
 ## Arrays
 
 Storing ordered collections of data
+
+There are a lot of things we can do with arrays in JavaScript
 ```javascript
+// Declaration
+let arr = [];
+let arr2 = new Array();
+
+let fruits = ['Orange', 'Apple', 'Pear'];
+let orange = fruits[0];
+
+// Arrays can hold multiple types
+let types = ['Apple', { name: 'John'}, true, function() { console.log('item')}];
+
+// Access
+console.log(types[types.length-1])
+console.log(types.at(-1));
+
+// JS arrays act simiarly to dequeues
+types.pop();
+types.push('Another');
+
+fruits = ['Orange', 'Apple', 'Pear'];
+fruits.shift() // Removes orange
+fruits.unshift('Orange'); // Back to front
+
+// Ways to loop through array items (don't use 'for in')
+let items = [1, 2, 3];
+
+for (let i = 0; i < items.length; i++) {
+    console.log(items[i]);
+}
+
+for (let item of items) {
+    console.log(item);
+}
+
+// Because the length is based off the largest index present + 1
+let ar = [1, 2, 3];
+ar.length = 0; // Clear array
+
+// Multidimensional arrays
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+// This will call the function since utlimately arrays are objects
+let arr = ["a", "b"];
+
+arr.push(function() {
+  alert( this );
+});
+
+arr[2]();
+
+// Sum input numbers
+let nums = [];
+let response = alert('Enter a number');
+
+while (String(response) in '1234567890') {
+    nums.push(+response);
+    response = alert('Another');
+}
+
+let sum = 0;
+for (let num in nums) {
+    sum += num;
+}
+```
+Iterating, searching, transforming, etc. with arrays
+```javascript
+// Splice can insert, remove, & replace
+let arr = ['I', 'Study', 'JavaScript'];
+arr.splice(1, 1); // ['I', 'JavaScript']
+
+let arr = ["I", "study", "JavaScript", "right", "now"];
+
+// starting at 0, remove three and insert these 
+arr.splice(0, 3, "Let's", "dance");
+
+// starting at two, remove none, add these
+arr.splice(2, 0, 'complex', 'language');
+
+let arr = [1, 2];
+
+// create an array from: arr and [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+// create an array from: arr and [3,4] and [5,6]
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+
+// create an array from: arr and [3,4], then add values 5 and 6
+alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+
+// Here we can do something for each element of an array
+arr.forEach(function(item, index, array) {
+    // do work
+});
+
+// Print each item
+['Bilbo', 'Gandalf', 'Sauron'].forEach(console.log());
+```
