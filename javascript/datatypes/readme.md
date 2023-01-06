@@ -227,4 +227,50 @@ arr.forEach(function(item, index, array) {
 
 // Print each item
 ['Bilbo', 'Gandalf', 'Sauron'].forEach(console.log());
+
+// Searching
+let arr = [1, 0, false];
+
+alert( arr.indexOf(0) ); // 1
+alert( arr.indexOf(false) ); // 2
+alert( arr.indexOf(null) ); // -1
+
+alert( arr.includes(1) ); // true
+
+// find() function, quite useful
+let users = [
+    {id: 1, name: "John"},
+    {id: 2, name: "Pete"},
+    {id: 3, name: "Mary"}
+];
+  
+let user = users.find(item => item.id == 1);
+  
+alert(user.name); // John
+
+// filter() looks for anything that makes a statement true
+let users = [
+    {id: 1, name: "John"},
+    {id: 2, name: "Pete"},
+    {id: 3, name: "Mary"}
+];
+  
+// returns array of the first two users
+let someUsers = users.filter(item => item.id < 3);
+  
+alert(someUsers.length); // 2
+
+// Map allows us to do something to many items
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
+alert(lengths); // 5,7,6
+
+// JavaScript also has split(), join(), and reverse() array functions
+let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+
+let names = 'Bilbo, Gandalf, Nazgul';
+let arr = names.split(', ');
+
+let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+let str = arr.join(';'); // glue the array into a string using ;
 ```
