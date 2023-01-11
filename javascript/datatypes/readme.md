@@ -274,3 +274,89 @@ let arr = names.split(', ');
 let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
 let str = arr.join(';'); // glue the array into a string using ;
 ```
+## Maps and Sets
+Maps and sets are other forms of data structures that let us associate values in certain ways
+A map is a key value pair-based data structure, and a set only allows unique values
+```javascript
+let map = new Map();
+map.set(1, 'Riley');
+map.set(2, 'Jake');
+map.set(3, 'Malcolm');
+map.set(4, 'Winston');
+map.set(5, 'Bernard');
+map.set(6, 'Alfie');
+
+for (let value of map.values()) {
+    console.log(value);
+}
+
+for (let key of map.keys()) {
+    console.log(key);
+}
+
+for (let item of map) {
+    console.log(item);
+}
+
+let set = new Set();
+set.add(4);
+set.add(5);
+set.add(4);
+
+for (let value of set) {
+    console.log(value);
+}
+
+// Function which returns an array with unique items of arr
+function unique(arr) {
+    let set = new Set();
+    for (let item of arr) {
+        set.add(item);
+    }
+    let uniques = [];
+    for (let item of set) {
+        uniques.push(item);
+    }
+    return uniques;
+}
+
+// Function which stores only unique anagrams of words
+function aclean(arr) {
+    let map = new Map();
+
+    for (let word of arr) {
+        // split the word by letters, sort them and join back
+        let sorted = word.toLowerCase().split('').sort().join(''); // (*)
+        map.set(sorted, word);
+    }
+
+    return Array.from(map.values());
+}
+
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// WeakMaps don't prevent garbage-collection of key objects
+// Keys must be objects, not primitives
+let john = { name: "John" };
+
+let weakMap = new WeakMap();
+weakMap.set(john, "...");
+
+john = null; // overwrite the reference
+
+// john is removed from memory!
+```
+## Destructuring
+By destructuring we can transform an object into many variables
+```javascript
+let user = {
+  name: "John",
+  years: 30
+};
+
+let {name, years: age, isAdmin = false} = user;
+
+alert( name ); // John
+alert( age ); // 30
+alert( isAdmin ); // false
+```
