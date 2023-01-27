@@ -1,4 +1,4 @@
-### JavaFX 
+# JavaFX 
 
 ## Why JavaFX?
 Firstly, Java is a rich and popular general purpose programming language which means that support will expectedly be long lasting.
